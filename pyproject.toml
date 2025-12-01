@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "intruder"
+version = "0.1.0"
+requires-python = ">=3.9"
+dynamic = ["dependencies"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+# THIS IS THE CRUCIAL PART THAT WAS MISSING
+[tool.setuptools]
+package-dir = { "" = "src" }

@@ -5,11 +5,12 @@ import cv2
 import numpy as np
 from typing import Any
 
-from . import HIGHT, WIDTH, FRAME
+from . import GVIDEO
+
+from . import FRAME
 from .video_base_objects import BlobObject
 from .video_base_objects import VideoDetections
 
-VIDEO = np.ndarray[tuple[int,HIGHT,HIGHT],np.dtype[np.uint8]]
 _RETRIES = 5
 _RADIUS_RANGE: tuple[int,int] = (3,12)
 _SPEED_RANGE: tuple[float,float] = (1.0,3.0)
@@ -32,36 +33,8 @@ class VideoMetadata:
 
 @dataclasses.dataclass
 class VideoGeneratedSample:
-    video: VIDEO
+    video: GVIDEO
     labels: VideoDetections
-    def render(
-        self,
-        color: tuple[int, int, int] = 255,   # Green by default (BGR)
-        thickness: int = 2,
-        copy: bool = True) -> VIDEO:
-        
-        if copy:
-            video_out = self.video.copy()
-        else:
-            video_out = self.video
-
-        num_frames = len(self.video)
-
-        for frame_idx in range(num_frames):
-            frame = video_out[frame_idx]
-            bboxes = self.labels.video_detections.get(frame_idx, [])
-
-            for bbox_idx, (x, y, w, h) in enumerate(bboxes):
-                # Convert to integer coordinates
-                x1 = int(round(x))
-                y1 = int(round(y))
-                x2 = int(round(x + w))
-                y2 = int(round(y + h))
-
-                # Draw rectangle
-                cv2.rectangle(frame, (x1, y1), (x2, y2), color, thickness)
-        return video_out
-
 
 class VideoGenerator(abc.ABC):
 

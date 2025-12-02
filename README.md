@@ -1,10 +1,17 @@
-# Intruder
-A project containing the code for a workshop assignment on computer vision
+# 🔍 Find the Intruder – Computer Vision Workshop  
 
-# How to use:
-  #### 1) Go to your working folder
-  #### 2) git clone https://github.com/sharon200102/Intruder.git
-  #### 3) cd Intruder
-  #### 4) pip install -e .
-  #### 5) open the working notebook in ./src/intruder/student_code/solutions.ipynb
-### You can now start working and find the intruders !!!
+You are given thermal videos from a secret camera placed deep in enemy territory.  
+Your mission: automatically detect and track every moving object (bright blob) no matter how  chaotic the scene gets.  
+
+You’ll start with static blobs on a black background and progress to multiple moving objects hidden inside grid patterns and noise.  
+By the end you’ll learn about localization, motion detection and background separation — all core computer vision skills.
+
+Pure hands-on fun. Let’s catch those intruders!
+
+**Quick start**  
+```bash
+git clone https://github.com/sharon200102/Intruder.git
+cd Intruder
+pip install -e .
+```
+open the notebook at src/intruder/student_code/task1.ipynb and you are good to gox

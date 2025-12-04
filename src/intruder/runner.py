@@ -11,7 +11,7 @@ from .video.video import (
  FRAME,VideoGeneratedSample
 )
 from .evaluation.evaluate import compute_video_f1_score
-from .video.background import GridBackgroundGenerator
+from .video.background import GridBackgroundGenerator,RandomNoiseBackgroundGenerator
 from .video.video_base_objects import CocoBbox,VideoDetections
 from .video.render import render_detections
 class WorkshopRunner:
@@ -21,7 +21,11 @@ class WorkshopRunner:
      3: WorkShopVideoGenerator(num_blobs=5,
                                background_generator=GridBackgroundGenerator(rows=5,cols=5),
                                should_move=True,
-                               can_overlap=True)}
+                               can_overlap=True),
+    4: WorkShopVideoGenerator(num_blobs=5,
+                              background_generator=RandomNoiseBackgroundGenerator(amount=0.2),
+                              should_move=True,
+                              can_overlap=True)}
     
     _VIDEO_METADATA = VideoMetadata(width=640,height=512,num_seconds=10,fps=5,blobs_color=255)
     _N_GENERATE = 2

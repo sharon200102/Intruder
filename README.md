@@ -14,4 +14,4 @@ git clone https://github.com/sharon200102/Intruder.git
 cd Intruder
 pip install -e .
 ```
-open the notebook at src/intruder/student_code/task1.ipynb and you are good to gox
+open the notebook at src/intruder/student_code/task1.ipynb and you are good to go
